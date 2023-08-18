@@ -1,0 +1,15 @@
+; u21467456
+print (sentence "Enter "number "of "sides: )
+make "sides first readlist ; read input 
+make "count first :sides ; recursive counter
+
+to MAKEPOLYGON :sides :count
+    if :count <= 0 [stop]
+    fd 100 rt 360/:sides
+    make "count :count - 1 ; decrement counter
+    MAKEPOLYGON :sides :count ; recursive call
+end
+
+MAKEPOLYGON :sides :count ; call recursive function
+
+print sentence "Thank "you!

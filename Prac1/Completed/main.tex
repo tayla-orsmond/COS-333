@@ -1,0 +1,139 @@
+% u21467456
+\documentclass{article}
+% \usepackage{graphicx} % Required for inserting images
+\usepackage{minted} % code formatting
+
+\title{COS333 Practical 1}
+\author{u21467456}
+\date{7 August 2023}
+
+\begin{document}
+\maketitle
+
+\section{Research Component}
+\begin{enumerate}
+    \item A Turing machine is a hypothetical machine proposed by Alan Turing that, given enough time and memory, can solve any problem so long as that problem may be expressed in code instructions and has an answer that can be calculated \cite{BinanceAcademy_2023}. Thus, a programming language is considered “Turing Complete” if it can imitate the Turing Machine, i.e., can solve any given problem that could be solved by a Turing Machine \cite{BinanceAcademy_2023}.\\
+    
+    \item An esoteric programming language (Esolang) is a programming language designed to test the limits of programming in a way that is unconventional, interesting, and entertaining \cite{WikimediaFoundation_2023a}. Esolangs are technically Turing Complete but are by no means meant to provide an efficient or effective solution to solving problems like traditional programming languages. Instead, Esolangs are designed to explore programming language design in a unique way and provide a proof of concept to some of the theory behind programming language design and programming in general \cite{WikimediaFoundation_2023a}.\\
+    
+    \item It is true that esolangs are typically created as parodies to traditional programming languages and concepts, with a fair portion of these languages being created as jokes or as side projects and all of them in a sense “parodying” traditional programming language design principles by making use of unconventional syntax, data and instruction representations, as well as unusual or difficult interpretation / compilation of the language (for example, Befunge, which can be read in 4 directions) \cite{WikimediaFoundation_2023a}. Esolangs are in name “esoteric” and aren't meant to be taken seriously or be used for typical projects / software (many of them have very limited practical application). Thus, it can be argued that these languages are simply meant to be amusing diversions.
+    
+    However, these languages are also important studies in the limits of programming and programming language design because they provide an unconventional and unique viewpoint for programmers on what is possible for computers to interpret, and highlights some of the important programming language concepts such as readability and writability (that a lot of these languages aim to undermine), which, without these languages, can seem like abstract or unimportant concepts for someone learning programming. Esolangs challenge the traditional formula for constructing a language, which positively impacts the development of languages in general because for new and better languages to be developed and programming in general to progress, we need to know what is possible. Esolangs promote creative and unconventional thinking, and this line of thinking may lead to new developments in traditional languages. \\
+
+    \item The Chef programming language was developed in 2002 by David Morgan-Mar, who has designed various esoteric languages over the years \cite{Esolang_2021}.The language is stack-oriented, whereby variables can be placed onto a stack and operations can then be performed on the stack. The language is designed to resemble a recipe, and thus consists of ingredients, and a method \cite{Progopedia_2011}.
+    
+    Ingredients are variables. They are referenced by a programmer-given name (e.g., eggs). Ingredients also have an integer value corresponding to its quantity (e.g., 110), and a state, either liquid, dry or unspecified, which determines how the value of the ingredient is printed (e.g., liquid = Unicode). The language is untyped and scalar, meaning the language does not support arrays / array processing \cite{Progopedia_2011}.
+    
+    The Method consists of a sequence of written instructions each beginning with a reserved keyword in Chef that describes the operation that takes place, followed typically by the ingredient (variable) name and then either a mixing bowl, or baking dish \cite{Progopedia_2011}. Mixing bowls or baking dishes are two types of stacks in Chef. Baking dishes are used exclusively to print values, while other operations are performed on ingredients in mixing bowls \cite{Progopedia_2011}. There can be multiple of these dishes, in which case the dish is referenced by its ordinal index (e.g., the 2nd baking dish) \cite{Progopedia_2011}.
+    
+    As mentioned, a program in Chef is structured as a recipe, and thus must consist of a recipe title (descriptive title of the program), ingredient list, method, and “serves” statement, which prints the contents of each of the baking dishes \cite{Progopedia_2011}. Optionally, one can also add a cooking time, oven temperature and comments (under the title) to make the program more descriptive \cite{Progopedia_2011}. Procedures are structured as auxiliary recipes, which operate on either their own variables and stack, or copies of the main recipe’s. Once completed, the output of the auxiliary recipe is placed on top of the main recipe’s stack \cite{Progopedia_2011}.
+    
+    Some examples of instructions in Chef include \begin{verbatim}
+        Put [ingredient] into [index] mixing bowl
+    \end{verbatim} which pushes the variable’s value onto the stack, and \begin{verbatim}
+        Fold [ingredient] into [index] mixing bowl
+    \end{verbatim} which pops the value from the stack and stores it in that variable. Loops are supported in Chef through the \verb|[Any verb]| and \verb|[Any verb] until [verb-ed]| commands \cite{Progopedia_2011}. Chef is Turing complete as it supports branching and other basic commands needed to simulate a Turing Machine, although working with floating point values is a challenge. \\
+    
+    \textit{Printing "Hello, World!" in Chef:}
+    \begin{minted}[frame=lines]{javascript}
+        Lobsters with Fruit and Nuts.
+        
+        This recipe prints "Hello, World!" in a most delicious way.
+        
+        Ingredients.
+        72 g hazelnuts
+        101 eggs
+        108 g lobsters
+        111 ml orange juice
+        44 g cashews
+        32 g sugar
+        87 ml water
+        114 g rice
+        100 g durian
+        33 passion fruit
+        10 ml lemon juice
+        
+        Method.
+        Put lemon juice into the mixing bowl.
+        Put passion fruit into the mixing bowl.
+        Put durian into the mixing bowl.
+        Put lobsters into the mixing bowl.
+        Put rice into the mixing bowl.
+        Put orange juice  into the mixing bowl.
+        Put water into the mixing bowl.
+        Put sugar into the mixing bowl.
+        Put cashews into the mixing bowl.
+        Put orange juice into the mixing bowl.
+        Put lobsters into the mixing bowl.
+        Put lobsters into the mixing bowl.
+        Put eggs into the mixing bowl.
+        Put hazelnuts into the mixing bowl.
+        Liquify contents of the mixing bowl.
+        Pour contents of the mixing bowl into the baking dish.
+        
+        Serves 1.
+
+    \end{minted}
+    
+    The JSFuck programming language originally began as a JavaScript encoding project (jjencode) by Yosuke Hasegawa in 2009 that made use of 18 symbols to obfuscate any JavaScript code. In 2010, this was narrowed down to 6 characters, \verb|[]()!+|, and JSFuck was officially created by Hasegawa by the end of 2010 \cite{WikimediaFoundation_2023b}. JSFuck is completely valid JavaScript code, and thus does not require its own interpreter or compiler and can run on any machine that can interpret JavaScript, thus it is sometimes used in XSS attacks due to its ability to bypass malicious code detection filters \cite{WikimediaFoundation_2023b}.
+    
+    JSFuck takes advantage of JavaScript being a weakly typed language, thus allowing an expression of any type to be evaluated, including empty arrays and Booleans, which JSFuck makes use of to produce numbers and character strings. Since an empty array prepended by a plus sign is converted into numeric 0 (\verb|+[]|), the value true can then be created by negating this (\verb|!+[]|) to force JavaScript to convert the numeric 0 to Boolean false (additionally, \verb|![]| will also produce false, and true can thus be created by \verb|!![]|) \cite{WikimediaFoundation_2023b}. This can then in turn be converted to a numeric 1 by prepending a plus sign again (\verb|+!+[]|, since JavaScript will convert the value to an integer). Other digits are then made by chaining multiple expressions for 1 together, and so on \cite{WikimediaFoundation_2023b}.
+    
+    Letters can be accessed through indexing string representations of numeric or Boolean values (which can themselves be obtained by summing the JSFuck representation of that value with an empty array, i.e., \verb|“true”+[]| or \verb|!+[]+[]|) \cite{WikimediaFoundation_2023b}.
+    
+    Triggering JavaScript functions can be done by calling the function constructor (an empty array) followed by the function name as a string (e.g., \verb|[][“alert()”]|) \cite{WikimediaFoundation_2023b}. 
+    
+    As is apparent from the examples here, JSFuck is extremely verbose (the JSFuck equivalent for the JavaScript \verb|alert(“Hello, World!”)| is 8148 characters long) and very difficult to read, making it perfect for code obfuscation \cite{Hasegawa_2012}\cite{WikimediaFoundation_2023b}. JSFuck is also fully Turing Complete, as it evaluates to valid JavaScript code, and can thus simulate any instruction. \\
+
+    \textit{A Portion of} \verb|alert("Hello, World!")| \textit{in JSFuck:}
+    \begin{minted}[frame=lines]{javascript}
+        [][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]
+        +(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[
+        ]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[
+        ]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[
+        ])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[
+        +!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]
+        +[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+
+        [])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!
+        +[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]
+        +(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]
+        )[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!
+        ![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+
+        []]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(
+        ![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!!
+        []+[])[+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[
+        ]]+(+(!+[]+!+[]+!+[]+[+!+[]]))[(!![]+[])[+[]]+(!![]+
+        [][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]
+        +(!![]+[])[+[]]])[+!+[]+[+[]]]+([]+[])[([][(![]+[])[
+        +[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+
+        []]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]
+        +[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+
+        []+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]
+        ]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+(
+        [][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]
+        ... 
+    \end{minted}
+
+    \item Emacs utilizes C and a dialect of Lisp as its back-end. Lisp is used to provide users with various commands and macros users can execute to carry out various actions (available as Lisp functions) in the Emacs editor efficiently through different keybindings or combinations of keybindings \cite{Klaatu_2023}. For example, \verb|Ctrl+f| is used to open a file specified by the user, \verb|Ctrl+w| is used to copy text and \verb|Ctrl+k| is used to close a file \cite{Klaatu_2023}. This is an example of the imperative programming paradigm. \\
+    
+    \item Scala is a programming language based off the Java language. Scala extends on Java’s object-oriented approach by implementing a pure object-oriented and functional language as every value is treated as an object described by a class, and every function can be represented and passed around as a value \cite{Odersky_Altherr_Cremet_Dubochet_Emir_Haller_Micheloud_Mihaylov_Moors_Rytz_etal._2023}. \\
+    
+    \item Alice is an educational programming language and software that was designed to teach individuals about object-oriented programming concepts in a way that is accessible and easy to understand \cite{WikimediaFoundation_2023c}. It was first developed in 1994 at the University of Virginia and continued to be developed from 1997 at Carnegie Mellon University \cite{WikimediaFoundation_2023c}.
+    
+    All coding in Alice is done through its IDE software. Alice focuses on object-oriented concepts through manipulation of interactive 3D environments via the Alice IDE \cite{WikimediaFoundation_2023c}. 
+    
+    Objects are placed into the scene, and code snippets (represented as tiles) can then be dragged into the program (animation) to manipulate those objects and construct a story. Objects in the scene can be accessed through the scene hierarchy (including the camera and lights), where after several intuitively named properties, methods, and functions specific to that object can be accessed as tiles and dragged into the program \cite{WikimediaFoundation_2023c}. Objects also support inheritance by having children objects visible in the hierarchy that can be accessed \cite{WikimediaFoundation_2023c}. Many of the methods use parameters and variables which can be clicked on and given values once in the program \cite{WikimediaFoundation_2023c}. 
+    
+    In addition, there are some control structure tiles that allow for program looping and branching as well as parallel processing, for example: \verb|Do in order|, \verb|While|, \verb|For all together| and \verb|Wait|. Methods can be placed in and around these control structures to direct program flow \cite{WikimediaFoundation_2023c}.
+    
+    Every method tile, control structure, and variable are descriptive, which increases the readability of the programs created. There are also a variety of customizable functions and combinations, making programs very expressive and thus writable. \\
+    
+    \item The Valgrind tool is used for detecting memory leaks and debugging memory issues in programs. 
+
+
+\end{enumerate}
+
+\bibliography{bibliography.bib}
+\bibliographystyle{plain}
+
+\end{document}
