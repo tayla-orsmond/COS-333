@@ -1,0 +1,17 @@
+speaks(catalina, spanish).
+speaks(pablo, spanish).
+speaks(john, english).
+speaks(rachel, english).
+speaks(john, german).
+speaks(johanna, german).
+
+billingual(X, L1, L2) :- speaks(X, L1), speaks(X, L2), not(L1 = L2).
+
+canCommunicateTranslated(X, Y) :- speaks(X, L1), speaks(Y, L2), not(X=Y), billingual(Person, L1, L2), not(Person = X), not(Person = Y).
+
+maximumElement(0, []).
+maximumElement(E, [E]).
+maximumElement(E, [H | T]) :- maximumElement(E1, T), compareAndGetMax(H, E1, E).
+
+compareAndGetMax(X, Y, X) :- X >= Y.
+compareAndGetMax(X, Y, Y) :- X < Y.

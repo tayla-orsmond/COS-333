@@ -1,0 +1,61 @@
+<?php
+    if($argc != 2){
+        var_dump("Invalid number of arguments");
+        exit();
+    }
+
+    $file = fopen($argv[1], "r");
+
+    $input = array();
+    $surnames = array();
+    $student_numbers = array();
+
+    while(!feof($file)) {
+        $line = fgets($file);
+        $line = trim($line);
+        array_push($input, $line);
+    }
+
+    fclose($file);
+    
+    if($input == null || empty($input) || $input[0] == null || empty($input[0])){
+        var_dump("None found");
+        exit();
+    }
+
+    foreach($input as $line){
+        $fullname = explode(",", $line)[1];
+        array_push($student_numbers, explode(",", $line)[0]);
+        if($fullname == null || empty($fullname)){
+            var_dump("None found");
+            exit();
+        }
+        $surname = explode(" ", $fullname)[count(explode(" ", $fullname))-1];
+        array_push($surnames, $surname);
+    }
+
+    // find the longest surname
+    // if there are multiple surnames of the same length, the longest is the one alphabetically first
+    $longest_index = 0;
+    
+    for($i = 1; $i < count($surnames); $i++){
+        if(strlen($surnames[$i]) > strlen($surnames[$longest_index])){
+            $longest_index = $i;
+        } elseif (strlen($surnames[$i]) == strlen($surnames[$longest_index])){
+            if(strcasecmp($surnames[$i], $surnames[$longest_index] < 0)){
+                $longest_index = $i;
+            }
+        }
+    }
+
+    var_dump('<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>The student with the longest surname is:'. $student_numbers[$longest_index] .'</p>
+    </body>
+    </html>');
