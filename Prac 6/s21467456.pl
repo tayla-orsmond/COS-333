@@ -15,6 +15,12 @@ my @input = ();
 open(my $fh, '<', $filename)
     or die "Could not open file '$filename' $!";
 
+# if the file is empty, exit
+if (-z $filename) {
+    print "None found\n";
+    exit;
+}
+
 while (my $row = <$fh>) {
     chomp $row;
     push @input, $row;

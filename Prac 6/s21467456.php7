@@ -42,7 +42,7 @@
         if(strlen($surnames[$i]) > strlen($surnames[$longest_index])){
             $longest_index = $i;
         } elseif (strlen($surnames[$i]) == strlen($surnames[$longest_index])){
-            if(strcasecmp($surnames[$i], $surnames[$longest_index] < 0)){
+            if(strcasecmp($surnames[$i], $surnames[$longest_index]) < 0){
                 $longest_index = $i;
             }
         }
